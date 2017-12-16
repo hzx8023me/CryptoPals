@@ -5,7 +5,7 @@ Test for Crypto Challenge 1
 """
 
 import unittest
-from set1 import cc1
+from challenges import cc1
 
 class TestCC1(unittest.TestCase):
     """
