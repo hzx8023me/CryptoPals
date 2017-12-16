@@ -12,4 +12,4 @@ def hex_to_base64(hex_string):
         hex_string {String} -- Hex String to convert.
     """
 
-    pass
+    return 'sss'
