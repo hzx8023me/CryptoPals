@@ -50,7 +50,7 @@ def single_byte_xor_cipher(hex_string, top=3, print_result=False):
             unicode_code_for_character = ord(character)
             # Use chr() to convert Integer to Character
             possible_result += chr(base10_number ^ unicode_code_for_character)
-        print(character, possible_result)
+
         possible_result_score = _calculate_score(possible_result)
         if possible_result_score != 0:
             possible_results[(possible_result, character)] = possible_result_score
