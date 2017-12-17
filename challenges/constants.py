@@ -13,8 +13,8 @@ https://en.wikipedia.org/wiki/Letter_frequency
 """
 ENGLISH_LETTER_FREQUENCY = {
     'a' : 0.08167,
-    'b'	: 0.01492,
-    'c'	: 0.02782,
+    'b' : 0.01492,
+    'c' : 0.02782,
     'd' : 0.04253,
     'e' : 0.12702,
     'f' : 0.02228,
