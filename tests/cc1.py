@@ -39,8 +39,7 @@ class TestCC1(TestCase):
         Test for method hex_to_base64 with random input
         """
 
-        for i in range(0, 1000, 2):
+        for i in range(2, 1000, 2):
             input_hex = ''.join(random.choices('0123456789ABCDEF', k=i))
             output_bese64 = self._get_base64(input_hex)
-
-        self.assertEqual(output_bese64, hex_to_base64(input_hex))
+            self.assertEqual(output_bese64, hex_to_base64(input_hex))
