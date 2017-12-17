@@ -42,3 +42,25 @@ def xor_hex_digits(hex_digit1, hex_digit2):
         xor_bin_output += '0' if bin1_digit == bin2_digit else '1'
 
     return binary_string_to_hex_string(xor_bin_output)
+
+def string_to_hex_string(string):
+    """
+    Convert a normal String to a Hex String without "0x" at the front.
+    For example: "Zhexin Han" to "5a686578696e2048616e" (5a:68:65:78:69:6e:20:48:61:6e)
+
+    Arguments:
+        string {String} -- String to be converted.
+    """
+
+    return ''.join('{:2x}'.format(character) for character in string.encode())
+
+def string_to_binary_string(string):
+    """
+    Convert a normal String to a Binary String without "0b" at the front.
+    For example: "Z" to "01011010"
+
+    Arguments:
+        string {String} -- String to be converted.
+    """
+
+    return ''.join('{:0>8b}'.format(character) for character in string.encode())
