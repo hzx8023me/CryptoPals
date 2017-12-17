@@ -16,8 +16,8 @@ def xor_strings_easy(hex_string1, hex_string2):
     """
 
     result = ''
-    for hex1, hex2 in zip(hex_string1, hex_string2):
-        result += format(int(hex1, 16) ^ int(hex2, 16), 'x')
+    for hex_digit1, hex_digit2 in zip(hex_string1, hex_string2):
+        result += format(int(hex_digit1, 16) ^ int(hex_digit2, 16), 'x')
 
     return result
 
