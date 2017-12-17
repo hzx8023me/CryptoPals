@@ -6,8 +6,7 @@ Test for Crypto Challenge 1
 
 import random
 from unittest import TestCase
-from challenges.cc1 import hex_to_base64
-from challenges.utils import get_base64
+from challenges.cc1 import hex_to_base64, hex_to_base64_builtin
 
 class TestCC1(TestCase):
     """
@@ -20,7 +19,7 @@ class TestCC1(TestCase):
         """
 
         input_hex = '44616e676572207a6f6e6521'
-        self.assertEqual(get_base64(input_hex), hex_to_base64(input_hex))
+        self.assertEqual(hex_to_base64_builtin(input_hex), hex_to_base64(input_hex))
 
     def test_hex_to_base64_long(self):
         """
@@ -28,7 +27,7 @@ class TestCC1(TestCase):
         """
 
         input_hex = '49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d'
-        self.assertEqual(get_base64(input_hex), hex_to_base64(input_hex))
+        self.assertEqual(hex_to_base64_builtin(input_hex), hex_to_base64(input_hex))
 
     def test_hex_to_base64_random(self):
         """
@@ -36,6 +35,6 @@ class TestCC1(TestCase):
         """
 
         for i in range(2, 1000, 2):
-            input_hex = ''.join(random.choices('0123456789ABCDEF', k=i))
-            output_bese64 = get_base64(input_hex)
+            input_hex = ''.join(random.choices('0123456789abcdef', k=i))
+            output_bese64 = hex_to_base64_builtin(input_hex)
             self.assertEqual(output_bese64, hex_to_base64(input_hex))

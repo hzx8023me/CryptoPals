@@ -4,6 +4,8 @@
 Module to convert a hex String to a base64 String
 """
 
+import base64
+import codecs
 from challenges.utils import hex_string_to_binary_string
 from challenges.constants import BASE64_TABLE
 
@@ -31,3 +33,17 @@ def hex_to_base64(hex_string):
         base64_string += '='
 
     return base64_string
+
+
+def hex_to_base64_builtin(hex_string):
+    """
+    Get Base64 String from Hex String.
+
+    Arguments:
+        hex_string {String} -- Hex String to be converted.
+
+    Returns:
+        String -- Base64 String.
+    """
+
+    return base64.b64encode(codecs.decode(hex_string, 'hex')).decode()
