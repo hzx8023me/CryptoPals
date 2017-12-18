@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 
 """
-Module to find the String that is encrypted by single-character XOR in a given file.
+Detect single-character XOR
+
+One of the 60-character strings in data/cc4.txt has been encrypted by single-character XOR.
+
+Find it.
+
+(Your code from #3 should help.)
 """
 
 from challenges.cc3 import single_byte_xor_cipher
