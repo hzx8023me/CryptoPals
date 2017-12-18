@@ -21,5 +21,5 @@ class TestCC3(TestCase):
         input_hex = '1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736'
         expected_string = "Cooking MC's like a pound of bacon"
         expected_key = 'X'
-        self.assertEqual(expected_string, single_byte_xor_cipher(input_hex)[0])
-        self.assertEqual(expected_key, single_byte_xor_cipher(input_hex)[1])
+        self.assertEqual(expected_string, single_byte_xor_cipher(input_hex)[1])
+        self.assertEqual(expected_key, single_byte_xor_cipher(input_hex)[0])

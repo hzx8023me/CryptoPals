@@ -38,7 +38,7 @@ class TestCC2(TestCase):
         Test for method xor_strings_easy and xor_strings_hard with random input
         """
 
-        for index in range(1, 1000):
+        for index in range(1, 100):
             input_hex1 = ''.join(random.choices('0123456789abcdef', k=index))
             input_hex2 = ''.join(random.choices('0123456789abcdef', k=index))
             self.assertEqual(xor_strings_hard(input_hex1, input_hex2),
