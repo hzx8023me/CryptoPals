@@ -28,6 +28,9 @@ def hex_to_base64(hex_string):
 
     Arguments:
         hex_string {String} -- Hex String to be converted.
+
+    Returns:
+        String -- Base64 String.
     """
 
     binary_string = hex_string_to_binary_string(hex_string)

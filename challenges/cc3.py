@@ -52,6 +52,9 @@ def single_byte_xor_cipher(hex_string, top=3, print_result=False):
 
     Arguments:
         hex_string {String} -- Hex String to be decrypted.
+
+    Returns:
+        String -- Most possible decrypted message.
     """
 
     possible_results = []

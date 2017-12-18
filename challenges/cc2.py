@@ -24,6 +24,9 @@ def xor_strings_easy(hex_string1, hex_string2):
     Arguments:
         hex_string1 {String} -- Hex String 1 to be XORed.
         hex_string2 {String} -- Hex String 2 to be XORed.
+
+    Returns:
+        String -- XORed string.
     """
 
     result = ''
@@ -40,6 +43,9 @@ def xor_strings_hard(hex_string1, hex_string2):
     Arguments:
         hex_string1 {String} -- Hex String 1 to be XORed.
         hex_string2 {String} -- Hex String 2 to be XORed.
+
+    Returns:
+        String -- XORed string.
     """
 
     result = ''
