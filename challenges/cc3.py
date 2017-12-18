@@ -5,7 +5,6 @@ Module to decrypt the message from Hex String.
 """
 
 import string
-from collections import OrderedDict
 from challenges.constants import ENGLISH_LETTER_SCORE
 
 def _calculate_score(possible_sentence):
@@ -44,10 +43,10 @@ def single_byte_xor_cipher(hex_string, top=3, print_result=False):
         possible_result = ''
         # Two characters at a time in order to convert to Integer
         for char1, char2 in zip(hex_string[::2], hex_string[1::2]):
-            base10_number = int(char1 + char2, 16)
-            unicode_code_for_character = ord(character)
+            # unicode_code_for_hex_number = int(char1 + char2, 16)
+            # unicode_code_for_character = ord(character)
             # Use chr() to convert Integer to Character
-            possible_result += chr(base10_number ^ unicode_code_for_character)
+            possible_result += chr(int(char1 + char2, 16) ^ ord(character))
 
         possible_result_score = _calculate_score(possible_result)
         possible_result = possible_result.strip()
