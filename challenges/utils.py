@@ -64,3 +64,17 @@ def string_to_binary_string(string):
     """
 
     return ''.join('{:0>8b}'.format(character) for character in string.encode())
+
+def xor_two_characters(character1, character2):
+    """
+    Returns the XOR value of two characters in Hex format without "0x".
+
+    Arguments:
+        character1 {String} -- Character 1 to be XORed.
+        character2 {String} -- Character 2 to be XORed.
+
+    Returns:
+        String -- The Hex String of the XOR value.
+    """
+
+    return format(ord(character1) ^ ord(character2), '02x')
