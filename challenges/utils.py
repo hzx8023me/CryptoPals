@@ -25,6 +25,40 @@ def binary_string_to_hex_string(bin_string):
     return '{0:x}'.format(int(bin_string, 2))
 
 
+def string_to_hex_string(string):
+    """
+    Convert a normal String to a Hex String without "0x" at the front.
+    For example: "Zhexin Han" to "5a686578696e2048616e" (5a:68:65:78:69:6e:20:48:61:6e)
+
+    Arguments:
+        string {String} -- String to be converted.
+    """
+
+    return ''.join('{:2x}'.format(character) for character in string.encode())
+
+
+def hex_string_to_string(hex_string):
+    """
+    [description]
+
+    Arguments:
+        hex_string {String} -- Hex String to be converted.
+    """
+    return bytearray.fromhex(hex_string).decode()
+
+
+def string_to_binary_string(string):
+    """
+    Convert a normal String to a Binary String without "0b" at the front.
+    For example: "Z" to "01011010"
+
+    Arguments:
+        string {String} -- String to be converted.
+    """
+
+    return ''.join('{:0>8b}'.format(character) for character in string.encode())
+
+
 def xor_hex_digits(hex_digit1, hex_digit2):
     """
     [description]
@@ -43,27 +77,6 @@ def xor_hex_digits(hex_digit1, hex_digit2):
 
     return binary_string_to_hex_string(xor_bin_output)
 
-def string_to_hex_string(string):
-    """
-    Convert a normal String to a Hex String without "0x" at the front.
-    For example: "Zhexin Han" to "5a686578696e2048616e" (5a:68:65:78:69:6e:20:48:61:6e)
-
-    Arguments:
-        string {String} -- String to be converted.
-    """
-
-    return ''.join('{:2x}'.format(character) for character in string.encode())
-
-def string_to_binary_string(string):
-    """
-    Convert a normal String to a Binary String without "0b" at the front.
-    For example: "Z" to "01011010"
-
-    Arguments:
-        string {String} -- String to be converted.
-    """
-
-    return ''.join('{:0>8b}'.format(character) for character in string.encode())
 
 def xor_two_characters(character1, character2):
     """
@@ -78,3 +91,44 @@ def xor_two_characters(character1, character2):
     """
 
     return format(ord(character1) ^ ord(character2), '02x')
+
+
+def xor_hex_strings_easy(hex_string1, hex_string2):
+    """
+    XOR two Hex Strings with the same length.
+
+    Arguments:
+        hex_string1 {String} -- Hex String 1 to be XORed.
+        hex_string2 {String} -- Hex String 2 to be XORed.
+
+    Returns:
+        String -- XORed string.
+    """
+
+    result = ''
+    for hex_digit1, hex_digit2 in zip(hex_string1, hex_string2):
+        result += format(int(hex_digit1, 16) ^ int(hex_digit2, 16), 'x')
+
+    return result
+
+
+def calculate_hamming_distance(string1, string2):
+    """
+    Calculate the Edit String/Hamming Distance of two strings.
+
+    Arguments:
+        string1 {String} -- string1 to use to calculate Hamming Distance.
+        string2 {String} -- string2 to use to calculate Hamming Distance.
+
+    Returns:
+        Integer -- Hsmming Distance.
+    """
+
+    string1_encoded_byte_array = string1.encode()
+    string2_encoded_byte_array = string2.encode()
+    hamming_distance = 0
+
+    for byte1, byte2 in zip(string1_encoded_byte_array, string2_encoded_byte_array):
+        hamming_distance += bin(byte1 ^ byte2).count('1')
+
+    return hamming_distance

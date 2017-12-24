@@ -15,9 +15,9 @@ should produce:
 746865206b696420646f6e277420706c6179
 """
 
-from challenges.utils import xor_hex_digits
+from challenges import utils
 
-def xor_strings_easy(hex_string1, hex_string2):
+def xor_hex_strings_easy(hex_string1, hex_string2):
     """
     XOR two Hex Strings with the same length.
 
@@ -28,12 +28,7 @@ def xor_strings_easy(hex_string1, hex_string2):
     Returns:
         String -- XORed string.
     """
-
-    result = ''
-    for hex_digit1, hex_digit2 in zip(hex_string1, hex_string2):
-        result += format(int(hex_digit1, 16) ^ int(hex_digit2, 16), 'x')
-
-    return result
+    return utils.xor_hex_strings_easy(hex_string1, hex_string2)
 
 
 def xor_strings_hard(hex_string1, hex_string2):
@@ -50,6 +45,6 @@ def xor_strings_hard(hex_string1, hex_string2):
 
     result = ''
     for hex_digit1, hex_digit2 in zip(hex_string1, hex_string2):
-        result += xor_hex_digits(hex_digit1, hex_digit2)
+        result += utils.xor_hex_digits(hex_digit1, hex_digit2)
 
     return result

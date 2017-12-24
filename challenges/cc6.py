@@ -55,6 +55,12 @@ We promise, there aren't any blatant errors in this text.
 In particular: the "wokka wokka!!!" edit distance really is 37.
 """
 
+import base64
+import itertools
+from challenges.utils import calculate_hamming_distance, string_to_hex_string, hex_string_to_string
+from challenges.cc3 import single_byte_xor_cipher
+from challenges.cc5 import repeating_key_xor
+
 def break_repeating_key_xor(data_file_path):
     """
     Breaks repeating key XOR in the data file.
@@ -66,4 +72,27 @@ def break_repeating_key_xor(data_file_path):
         String -- Most possible result message.
     """
 
-    pass
+    with open(data_file_path, 'r') as data_file:
+        key_size_hamming_distance_map = {}
+        # b64decode() retuens byte array, use decode() to convert to String.
+        base64_decoded_data = base64.b64decode(data_file.read()).decode()
+        # Step 1.
+        for key_size in range(2, 41):
+            # Get the first 4 blocks, with each block has key_size bytes.
+            blocks = [base64_decoded_data[i : i+key_size] for i in range(0, 4*key_size, key_size)]
+            hamming_distances = []
+            # Get all possible combinations for the 4 blocks.
+            for combination in itertools.combinations(blocks, 2):
+                # Calculate normalized hamming distance for each combination.
+                hamming_distances.append(calculate_hamming_distance(combination[0], combination[1]) / key_size)
+            # Store the average hamming distance for the current key_size.
+            key_size_hamming_distance_map[key_size] = sum(hamming_distances) / len(hamming_distances)
+        # Find the most possible key with the lowest hamming distance.
+        most_possible_key = sorted(key_size_hamming_distance_map.items(), key=lambda x: x[1])[0][0]
+        overall_key = ''
+        for i in range(most_possible_key):
+            # Step 6.
+            block = base64_decoded_data[i::most_possible_key]
+            overall_key += single_byte_xor_cipher(string_to_hex_string(block))[0]
+        result_hex = repeating_key_xor(base64_decoded_data, overall_key)
+        return overall_key, hex_string_to_string(result_hex)
